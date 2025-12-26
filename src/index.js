@@ -1,13 +1,31 @@
+
+
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom/client';  // Only import from 'react-dom/client' for React 18+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';  // Make sure to import Routes
+import { StoreProvider } from 'easy-peasy';
+import store from './store';
+import NewPost from './NewPost';
+import PostPage from './PostPage';
+import EditPost from './EditPost';
+import About from './About';
+import Missing from './Missing';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <App />
+   
+    <StoreProvider store={store}>
+   
+      <Router>
+      <App/>
+      </Router>
+   
+    </StoreProvider>
   </React.StrictMode>
 );
 
